@@ -5,3 +5,26 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll('.reload-page').forEach(link => {
+
+        link.addEventListener('click', function(e) {
+
+            e.preventDefault();
+
+            const loader = document.getElementById('page-loader');
+
+            loader.classList.add('active');
+
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 500);
+
+        });
+
+    });
+
+});
