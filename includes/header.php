@@ -18,9 +18,12 @@
         </style>
     </head>
     <body>
+        <div id="page-loader">
+    <div class="loader-spinner"></div>
+</div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand d-flex align-items-center fw-bold text-uppercase" href="#!" style="letter-spacing: 1px;">
+                <a class="navbar-brand d-flex align-items-center fw-bold text-uppercase reload-page" href="index.php" style="letter-spacing: 1px;">
     <svg width="38" height="38" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" class="me-2">
         <rect width="44" height="44" rx="8" fill="#F97316"/>
         <path d="M10 30 L10 18 Q10 10 22 10 Q34 10 34 18 L34 30 Z" fill="#1a1a1a"/>
@@ -34,7 +37,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link active reload-page" aria-current="page" href="index.php">Trang chủ</a>
                         <li class="nav-item"><a class="nav-link" href="#!">Giới thiệu</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Danh mục</a>
