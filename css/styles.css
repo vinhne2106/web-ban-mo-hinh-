@@ -10824,4 +10824,67 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/*  MECHASHOP - HIỆU ỨNG CUỘN NGANG (HORIZONTAL SCROLL) */
 
+.scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto; /* Đổi thành auto để JS xử lý mượt hơn */
+    padding-bottom: 15px; 
+    
+    /* ẨN THANH CUỘN CHO FIREFOX & IE/EDGE */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+/* ẨN THANH CUỘN CHO CHROME, SAFARI, OPERA */
+.scrolling-wrapper::-webkit-scrollbar {
+    display: none; 
+}
+
+.scrolling-card {
+    flex: 0 0 auto;
+    width: 190px !important; /* Thu gọn chiều rộng thẻ một chút nữa */
+    margin-right: 1.2rem; 
+}
+
+/* 1. Tuyệt chiêu ép ảnh vuông tuyệt đối 1:1 */
+.scrolling-card .card-img-top {
+    aspect-ratio: 1 / 1; /* Tự động tính toán để chiều cao bằng đúng chiều rộng */
+    height: auto; 
+    object-fit: cover; 
+}
+
+/* 2. Ép phần nội dung chữ bên dưới ngắn lại để thẻ bớt dài */
+.scrolling-card .card-body {
+    padding: 0.5rem 0.75rem !important; 
+}
+
+/* 3. Thu nhỏ font chữ và giảm khoảng cách giữa các dòng */
+.scrolling-card h6 {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem !important;
+}
+.scrolling-card p.text-muted {
+    margin-bottom: 0.2rem !important;
+    font-size: 0.7rem;
+}
+.scrolling-card .text-danger {
+    font-size: 1rem !important; /* Giá tiền nhỏ lại một xíu cho cân xứng */
+}
+.scrolling-card h6{
+    min-height:60px;
+}
+  .preorder-box{
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    margin: 40px 0;
+}
+/* Màu xanh ngọc cho tiêu đề Pre-order */
+.text-cyan {
+    color: #00bcd4 !important;
+}
