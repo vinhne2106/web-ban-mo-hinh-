@@ -10924,3 +10924,61 @@ textarea.form-control-lg {
 body{
     background: #f5f5f5;
 }
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* 2. Hiệu ứng khi rê chuột (hover) vào thẻ */
+.card:hover {
+    transform: translateY(-8px) !important; /* Nhấc bổng thẻ lên trên 8px */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important; 
+    z-index: 2; 
+}
+
+/* Đổi màu viền thẻ thành màu cam nhạt khi rê chuột để bắt mắt hơn */
+.card:hover {
+    border-color: #ffb74d !important;
+}
+/* Hiệu ứng sáng màu khi rê chuột */
+.hover-bright {
+    transition: all 0.3s ease-in-out; /* Tạo độ mượt */
+    opacity: 0.8; /* Mặc định hơi mờ một chút */
+}
+
+.hover-bright:hover {
+    opacity: 1; /* Khi rê vào thì sáng rõ lên */
+    transform: translateX(5px); /* Dịch nhẹ sang phải một chút để tạo sự chú ý */
+}
+/* FLASH SALAE*/
+/* Màu đỏ của thanh Header */
+.flash-header {
+    background-color: #ef4444 !important;
+}
+
+/* Nhãn phần trăm giảm giá */
+.badge-discount {
+    top: 10px;
+    left: 10px;
+    background-color: #be123c;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    z-index: 10;
+}
+
+/* Hiệu ứng gạch ngang giá cũ */
+.text-decoration-line-through {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+
+/* Hiệu ứng di chuột nổi bật */
+.flash-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.flash-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(239, 68, 68, 0.2) !important;
+}
