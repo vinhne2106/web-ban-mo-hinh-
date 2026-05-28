@@ -8,14 +8,8 @@
         <title>Mechashop - Thế giới mô hình Gundam</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <style>
-            /* Custom banner background */
-            header.bg-dark {
-                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1200x400/1a1a1a/dc3545?text=MECHASHOP+GUNDAM') center center no-repeat;
-                background-size: cover;
-            }
-        </style>
+        <link href="assets/css/styles.css" rel="stylesheet" />
+        
     </head>
     <body>
         <div id="page-loader">
@@ -38,15 +32,24 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active reload-page" aria-current="page" href="index.php">Trang chủ</a>
-                        <li class="nav-item"><a class="nav-link" href="#!">Giới thiệu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.php">Giới thiệu</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Danh mục</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">Tất cả sản phẩm</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">High Grade (HG)</a></li>
-                                <li><a class="dropdown-item" href="#!">Real Grade (RG)</a></li>
-                                <li><a class="dropdown-item" href="#!">Master Grade (MG)</a></li>
+                                <li><a class="dropdown-item" href="index.php">Tất cả sản phẩm</a></li>
+        <li><hr class="dropdown-divider" /></li>
+                                <?php
+            $sql_menu = "SELECT * FROM categories";
+            $result_menu = $conn->query($sql_menu);
+            
+            if ($result_menu->num_rows > 0) {
+                while($row = $result_menu->fetch_assoc()) {
+                    echo "<li><a class='dropdown-item' href='category.php?id=".$row['id']."'>".$row['name']."</a></li>";
+                }
+            } else {
+                echo "<li><a class='dropdown-item' href='#'>Chưa có danh mục</a></li>";
+            }
+            ?>
                             </ul>
                         </li>
                     </ul>

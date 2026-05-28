@@ -10824,6 +10824,8 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+
 /*  MECHASHOP - HIỆU ỨNG CUỘN NGANG (HORIZONTAL SCROLL) */
 
 .scrolling-wrapper {
@@ -10982,3 +10984,48 @@ body{
     transform: translateY(-8px);
     box-shadow: 0 12px 24px rgba(239, 68, 68, 0.2) !important;
 }
+/* Tùy chỉnh dải Flash Sale */
+.flash-header-custom {
+    background: linear-gradient(90deg, #dc3545, #f97316) !important;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+}
+
+.flash-header-custom .text-warning {
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
+}
+/* Hiệu ứng sáng sáng nhấp nháy cho đồng hồ */
+.glow-timer {
+    animation: pulse-glow 1.5s infinite;
+}
+
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.9); /* Độ sáng cao nhất */
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+}
+/* Hiệu ứng Lắc lư 3 nút liên hệ */
+.shake-btn {
+    animation: shake-animation 3s infinite;
+    transform-origin: center;
+}
+
+@keyframes shake-animation {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(-15deg); }
+    20% { transform: rotate(15deg); }
+    30% { transform: rotate(-10deg); }
+    40% { transform: rotate(10deg); }
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); } /* Nghỉ một chút trước khi lắc tiếp */
+}
+            /* Custom banner background */
+            header.bg-dark {
+                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1200x400/1a1a1a/dc3545?text=MECHASHOP+GUNDAM') center center no-repeat;
+                background-size: cover;
+            }

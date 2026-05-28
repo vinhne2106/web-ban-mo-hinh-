@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         function autoScroll() {
             if (!isPaused) {
-                wrapper.scrollLeft += 0.5; 
+                wrapper.scrollLeft += 1.0; 
                 if (wrapper.scrollLeft >= originalWidth) {
                     wrapper.scrollLeft -= originalWidth;
                 }
