@@ -9,9 +9,18 @@
                 <h6 class='fw-bold mb-2' style='min-height: 40px;'><?php echo $row['name']; ?></h6>
             </a>
             
-            <p class='text-danger fw-bold fs-6'><?php echo number_format($row['price'], 0, ',', '.'); ?> VNĐ</p>
+            <?php if (isset($row['is_preorder']) && $row['is_preorder'] == 1): ?>
+                <div class="mb-2">
+                    <span class='badge bg-warning text-dark mb-1' style="font-size: 0.75rem;">Pre-order (Cọc 10%)</span>
+                    <p class='text-danger fw-bold fs-6 mb-0'><?php echo number_format($row['price'] * 0.1, 0, ',', '.'); ?>đ</p>
+                </div>
+            <?php else: ?>
+                <div class="mb-2">
+                    <p class='text-danger fw-bold fs-6 mb-0' style="margin-top: 24px;"><?php echo number_format($row['price'], 0, ',', '.'); ?> VNĐ</p>
+                </div>
+            <?php endif; ?>
             
-            <a href='cart.php?action=add&id=<?php echo $row['id']; ?>' class='btn btn-outline-danger btn-sm w-100 mt-2'>
+            <a href='controller/cart.php?action=add&id=<?php echo $row['id']; ?>' class='btn btn-outline-danger btn-sm w-100 mt-2'>
                 <i class='bi bi-cart-plus me-1'></i> Thêm vào giỏ
             </a>
         </div>

@@ -9,7 +9,6 @@
         </div>
     </div>
 </header>
-<!-- Sản phẩm Pre order -->
 <section class="pt-5 pb-3">  
     <div class="container px-4 px-lg-5">
         <div class="preorder-box">
@@ -52,7 +51,6 @@
     }
     ?>
 </div>
-<!-- Sản phẩm mới nhất -->
 <section class="py-5 bg-light">
     <div class="container px-4 px-lg-5">
         
@@ -95,7 +93,7 @@
                         </div>
                         
                         <div class="card-footer p-3 pt-0 border-top-0 bg-transparent text-center">
-                            <a class="btn btn-outline-danger w-100 btn-sm" href="cart_add.php?id=<?php echo $row_new['id']; ?>">
+                            <a class="btn btn-outline-danger w-100 btn-sm" href="controller/cart.php?action=add&id=<?php echo $row_new['id']; ?>">
                                 <i class="bi bi-cart-plus me-1"></i> Thêm vào giỏ
                             </a>
                         </div>

@@ -1,3 +1,8 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="vi">
     <head>
@@ -59,13 +64,25 @@
                         <button class="btn btn-outline-danger" type="submit"><i class="bi bi-search"></i></button>
                     </form>
 
-                    <form class="d-flex me-3">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Giỏ hàng
-                            <span class="badge bg-danger text-white ms-1 rounded-pill">3</span>
-                        </button>
-                    </form>
+                    <div class="d-flex me-3">
+    <?php
+    // Tính tổng số lượng sản phẩm trong giỏ hàng
+    $total_items = 0;
+    if (isset($_SESSION['cart'])) {
+        foreach ($_SESSION['cart'] as $id => $quantity) {
+            $total_items += $quantity; // Cộng dồn số lượng từng món
+        }
+    }
+?>
+<div class="d-flex me-3">
+    <a href="view_cart.php" class="btn btn-outline-dark">
+        <i class="bi bi-cart-fill me-1"></i>
+        Giỏ hàng
+        <span class="badge bg-danger text-white ms-1 rounded-pill">
+            <?php echo $total_items; ?>
+        </span>
+    </a>
+</div>
 
                     <div class="d-flex">
                         <a href="#" class="btn btn-dark btn-sm me-2">Đăng nhập</a>

@@ -75,7 +75,7 @@ if (!$row) {
             <p class="text-secondary mb-4">Chi tiết: Sản phẩm chính hãng, độ chi tiết cao, full phụ kiện. Phù hợp cho việc sưu tầm và trưng bày.</p>
             
             <!-- CHUYỂN THÀNH FORM ĐỂ GỬI SỐ LƯỢNG -->
-            <form action="cart.php" method="GET">
+            <form action="controller/cart.php" method="GET">
                 <!-- Gửi ngầm id sản phẩm -->
                 <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 
