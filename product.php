@@ -24,10 +24,12 @@ if (!$row) {
             $category_name = $cat_row['name'];
         }
     }
+    
+    // Đảm bảo không bị lỗi nếu DB chưa có cột quantity
+    $stock = isset($row['quantity']) ? $row['quantity'] : 10; 
 ?>
 <div class="container py-4">
 
-    <!-- THANH ĐIỀU HƯỚNG (BREADCRUMB) -->
     <div class="p-3 bg-white rounded shadow-sm border mb-4">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 bg-transparent p-0">
@@ -47,18 +49,15 @@ if (!$row) {
     </div>
 
     <div class="row g-4">
-        <!-- Cột 1: Ảnh sản phẩm -->
         <div class="col-lg-5">
             <div class="p-3 border rounded shadow-sm bg-white text-center">
                 <img src="assets/images/<?php echo $row['image']; ?>" class="img-fluid rounded" alt="<?php echo $row['name']; ?>" style="max-height: 400px; object-fit: contain;">
             </div>
         </div>
 
-        <!-- Cột 2: Thông tin chính -->
         <div class="col-lg-4">
             <h2 class="fw-bold mb-3"><?php echo $row['name']; ?></h2>
             
-            <!-- KHUNG HIỂN THỊ GIÁ -->
             <div class="p-3 mb-4 bg-light rounded border-start border-danger border-4">
                 <?php if (isset($row['is_preorder']) && $row['is_preorder'] == 1): ?>
                     <p class="text-warning text-uppercase fw-bold mb-1 small">Tình trạng: Đặt trước</p>
@@ -74,34 +73,47 @@ if (!$row) {
             
             <p class="text-secondary mb-4">Chi tiết: Sản phẩm chính hãng, độ chi tiết cao, full phụ kiện. Phù hợp cho việc sưu tầm và trưng bày.</p>
             
-            <!-- CHUYỂN THÀNH FORM ĐỂ GỬI SỐ LƯỢNG -->
             <form action="controller/cart.php" method="GET">
-                <!-- Gửi ngầm id sản phẩm -->
                 <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 
-                <!-- THÀNH CHỌN SỐ LƯỢNG -->
-                <div class="mb-4">
-                    <label class="form-label fw-bold small text-secondary">Số lượng:</label>
-                    <div class="input-group" style="width: 140px;">
-                        <button class="btn btn-outline-secondary" type="button" onclick="var qty = document.getElementById('quantity'); if(qty.value > 1) qty.value--;">-</button>
-                        <input type="number" id="quantity" name="quantity" class="form-control text-center" value="1" min="1" readonly>
-                        <button class="btn btn-outline-secondary" type="button" onclick="var qty = document.getElementById('quantity'); qty.value++;">+</button>
-                    </div>
+                <div class="mb-3">
+                    <?php if ($stock > 0): ?>
+                        <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Còn hàng</span>
+                        <span class="text-muted ms-2 small">Sẵn có: <strong class="text-danger"><?php echo $stock; ?></strong> sản phẩm</span>
+                    <?php else: ?>
+                        <span class="badge bg-danger"><i class="bi bi-x-circle me-1"></i>Hết hàng</span>
+                    <?php endif; ?>
                 </div>
+
+                <div class="mb-4">
+    <label class="form-label fw-bold small text-secondary">Số lượng:</label>
+    <div class="input-group" style="width: 140px;">
+        <button class="btn btn-outline-secondary" type="button" onclick="var qty = document.getElementById('quantity'); if(parseInt(qty.value) > 1) qty.value--;">-</button>
+        
+        <input type="number" id="quantity" name="quantity" class="form-control text-center" value="1" min="1" max="<?php echo $stock; ?>" 
+               onchange="if(parseInt(this.value) > <?php echo $stock; ?>) { alert('Kho chỉ còn <?php echo $stock; ?> sản phẩm!'); this.value = <?php echo $stock; ?>; } else if(parseInt(this.value) < 1 || this.value == '') { this.value = 1; }">
+        
+        <button class="btn btn-outline-secondary" type="button" onclick="var qty = document.getElementById('quantity'); if(parseInt(qty.value) < <?php echo $stock; ?>) qty.value++; else alert('Kho chỉ còn <?php echo $stock; ?> sản phẩm!');">+</button>
+    </div>
+</div>
                 
-                <!-- HỆ THỐNG NÚT BẤM GỬI FORM -->
-                <div class="d-grid gap-2">
-                    <button type="submit" name="action" value="add" class="btn btn-outline-secondary btn-lg">
-                        Thêm vào giỏ
-                    </button>
-                    <button type="submit" name="action" value="buy_now" class="btn btn-danger btn-lg fw-bold">
-                        Mua ngay
-                    </button>
+                <div class="d-grid gap-2 mt-3">
+                    <?php if ($stock > 0): ?>
+                        <button type="submit" name="action" value="add" class="btn btn-hover-red btn-lg fw-bold">
+                            Thêm vào giỏ
+                        </button>
+                        <button type="submit" name="action" value="buy_now" class="btn btn-danger btn-lg fw-bold">
+                            Mua ngay
+                        </button>
+                    <?php else: ?>
+                        <button type="button" class="btn btn-secondary btn-lg fw-bold" disabled>
+                            Tạm hết hàng
+                        </button>
+                    <?php endif; ?>
                 </div>
             </form>
         </div>
 
-        <!-- Cột 3: Hỗ trợ khách hàng -->
         <div class="col-lg-3">
             <div class="card border-0 shadow-sm">
                 <div class="card-body">

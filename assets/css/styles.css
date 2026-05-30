@@ -11029,3 +11029,16 @@ body{
                 background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1200x400/1a1a1a/dc3545?text=MECHASHOP+GUNDAM') center center no-repeat;
                 background-size: cover;
             }
+/* Hiệu ứng hover nút Thêm vào giỏ (Phiên bản Nền Trắng) */
+.btn-hover-red {
+    background-color: #ffffff; /* Nền trắng */
+    color: #212529;            /* Chữ màu đen sẫm */
+    border: 2px solid #212529; /* Viền màu đen sẫm */
+    transition: all 0.3s ease; /* Chuyển màu mượt mà trong 0.3s */
+}
+
+.btn-hover-red:hover {
+    background-color: #ffffff !important; /* Rê chuột vào vẫn giữ nền trắng */
+    color: #dc3545 !important;            /* Chữ đổi sang Đỏ */
+    border-color: #dc3545 !important;     /* Viền đổi sang Đỏ */
+}

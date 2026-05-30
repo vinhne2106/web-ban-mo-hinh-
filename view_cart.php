@@ -66,8 +66,14 @@ include 'includes/header.php';
                             <?php echo number_format($unit_price, 0, ',', '.'); ?>đ
                         </td>
                         <td class="text-center">
-                            <span class="fw-bold"><?php echo $quantity; ?></span>
-                        </td>
+    <div class="input-group input-group-sm justify-content-center" style="width: 120px; margin: 0 auto;">
+        <a href="controller/cart.php?action=decrease&id=<?php echo $id; ?>" class="btn btn-outline-secondary fw-bold px-3">-</a>
+        
+        <input type="text" class="form-control text-center bg-white fw-bold" value="<?php echo $quantity; ?>" readonly>
+        
+        <a href="controller/cart.php?action=increase&id=<?php echo $id; ?>" class="btn btn-outline-secondary fw-bold px-3">+</a>
+    </div>
+</td>
                         <td class="text-danger fw-bold">
                             <?php echo number_format($subtotal, 0, ',', '.'); ?>đ
                         </td>
